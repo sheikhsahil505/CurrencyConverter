@@ -21,7 +21,7 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
     @Autowired
     private CurrencyService currencyService;
     @Override
-    public  String convertAmount(Currency currency) {
+    public String convertAmount(Currency currency) {
         String amount = currency.getAmount();
         String to = currency.getToCurrency();
         String date = currency.getDate();

@@ -5,6 +5,8 @@ import com.currency.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,10 +27,16 @@ public class CurrencyController {
     }
 
     @RequestMapping(value = "/convert" ,method = RequestMethod.POST)
-    public String convert(@Valid Currency currency, Model model){
+    public String convert(@Valid Currency currency, BindingResult br, Model model){
+        if (br.hasErrors()) {
+            List<ObjectError> errors = br.getAllErrors();
+            model.addAttribute("ErrorFromBackend", errors);
+            return "index";
+        }else{
         String result = currencyService.convertAmount(currency);
         model.addAttribute("result",result);
         return "index";
+    }
     }
     @RequestMapping(value = "/history" ,method = RequestMethod.GET)
     public String getAll( Model model){

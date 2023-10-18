@@ -1,19 +1,9 @@
 
-]
-java:S4684 "@Replace this persistent entity with a simple POJO or DTO object.(ó¡Íù8ĞùÃ³1
+h
+java:S1192"FDefine a constant instead of duplicating this literal "index" 3 times.(¦œû×ÿÿÿÿÿ8«ËŞˆ´1
+\
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(·çµ.8µËŞˆ´1
 l
-java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÔšÙğûÿÿÿÿ8ĞùÃ³1
-T
-java:S1128"7Remove this unused import 'com.google.gson.JsonObject'.(µÊ´½8Ã†¤Ä³1
-T
-java:S1128"7Remove this unused import 'com.google.gson.JsonParser'.(Œƒ¸Æ8Ã†¤Ä³1
-U
-java:S1128"8Remove this unused import 'com.google.gson.JsonElement'.(ğ†˜³8Ã†¤Ä³1
-F
-java:S1128"$Remove this unused import 'okhttp3'.(ê‚Ÿœşÿÿÿÿ8Ã†¤Ä³1
-s
-java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ8Ã†¤Ä³1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8¢ØÙÄ³1
-W
-java:S1128":Remove this unused import 'java.util.concurrent.TimeUnit'.(Æ™ş8Ã†¤Ä³1
+java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÔšÙğûÿÿÿÿ8¶ËŞˆ´1
+e
+java:S4488)"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ĞñÓÁ8¼ËŞˆ´1

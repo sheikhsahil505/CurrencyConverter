@@ -5,7 +5,7 @@ import com.currency.model.Currency;
 import java.util.List;
 
 public interface CurrencyService {
-    String convertAmount(Currency currency);
+    List<Currency> convertAmount(Currency currency);
 
     void save(Currency currency);
 

@@ -22,7 +22,8 @@
 
 <!--	 Define ViewResolver for JSP -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		  <!-- Your JSP view folder -->
+
+		<property name="prefix" value="WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 

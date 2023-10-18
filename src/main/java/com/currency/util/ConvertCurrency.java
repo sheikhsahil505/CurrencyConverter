@@ -2,6 +2,8 @@ package com.currency.util;
 
 import com.currency.model.Currency;
 
+import java.util.List;
+
 public interface ConvertCurrency {
-    public  String convertAmount(Currency currency);
+      List<Currency> convertAmount(Currency currency);
 }

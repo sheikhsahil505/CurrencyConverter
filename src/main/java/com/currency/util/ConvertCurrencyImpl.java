@@ -14,14 +14,17 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 @Service
 public class ConvertCurrencyImpl implements ConvertCurrency{
     @Autowired
     private CurrencyService currencyService;
     @Override
-    public String convertAmount(Currency currency) {
+    public List<Currency> convertAmount(Currency currency) {
+        List<Currency> list = new ArrayList<>();
         String amount = currency.getAmount();
         String to = currency.getToCurrency();
         String date = currency.getDate();
@@ -70,7 +73,8 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
        }catch (Exception e){
            e.printStackTrace();
        }
-        return result;
+       list.add(currency);
+        return list;
     }
 
 }

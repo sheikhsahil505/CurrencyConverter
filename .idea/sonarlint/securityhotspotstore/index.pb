@@ -23,3 +23,9 @@ I
 src/main/webapp/index.jsp,8/e/8e6d3b70c9f5b02570779b0441540d45eceb0ded
 m
 =src/main/java/com/currency/controller/CurrencyController.java,1/6/16314d1db805364b584f0a1cc4d40a9620c1e9cc
+W
+'src/main/webapp/WEB-INF/jsp/history.jsp,9/4/94e275ae9fa234244133c2f6f5951c45062f8e19
+V
+&src/main/webapp/WEB-INF/jsp/footer.jsp,8/d/8de6e3d4c30a2d3691e5ed5016c05dc9727cb054
+V
+&src/main/webapp/WEB-INF/jsp/header.jsp,b/8/b89d908249dbd6ca3797ce58650e188ee38cfe06

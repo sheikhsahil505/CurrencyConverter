@@ -1,3 +1,4 @@
+<%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.currency.model.Currency" %>
@@ -34,27 +35,7 @@ font-weight:bold;
                     margin-top: 20px;
                 }
 
- .navbar-logo {
-          height: auto;
-            height: 50px;
-            border-radius: 50px;
-        }
 
-
-        .navbar-nav .btn {
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 25px;
-        }
-
-
-    .navbar-dark {
-        background-color: #343a40;
-    }
-
-    .navbar-nav .nav-link {
-        color: #ffffff; /* White text color */
-    }
 
     footer {
                    background-color: #343a40;
@@ -79,36 +60,19 @@ font-weight:bold;
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- Change bg-light to bg-dark here -->
-    <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand fw-bold" href="#">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRkCF5oiM_exhcpQGRbGXGzxu8jDLf_Sj0KQ&usqp=CAU" alt="Logo" class="navbar-logo">
-   </a>
-    </div>
-     <div class="collapse navbar-collapse pr-5" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <!-- Language Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Language
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class "dropdown-item" href="#">Hindi</a>
-                            <a class="dropdown-item" href="#">Spanish</a>
-                            <a class="dropdown-item" href="#">French</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-</nav>
+<% List<Currency> result = (List<Currency>) request.getAttribute("result");
+%>
 <div class="container mt-3" id="container">
-    <form action="convert" method="post" class="col-md-6 mx-auto p-2 rounded" style="background-color: #f8f9fa;">
+    <form action="convert" method="post" class="col-md-6 mx-auto p-2 rounded" style="background-color: #f8f9fa;" id="myForm">
         <div class="form-group">
             <label for="fromCurrency">From Currency:</label>
             <select class="form-control" name="fromCurrency" id="from">
+            <% if (result!= null){
+                 for (Currency currency : result) { %>
+                        <%if (currency.getFromCurrency() != null) {%>
+                         <option value="<%= currency.getFromCurrency()%>"><%= currency.getFromCurrency()%></option>
+                        <%}
+                        } }%>
                 <option value="INR">🇮🇳&emsp;Indian Rupee (INR)</option>
                    <option value="USD">🇺🇸&emsp;US Dollar (USD)</option>
                    <option value="EUR">🇪🇺&emsp;Euro (EUR)</option>
@@ -127,6 +91,12 @@ font-weight:bold;
         <div class="form-group">
             <label for="toCurrency">To Currency:</label>
             <select class="form-control" name="toCurrency" id="to">
+             <% if (result!= null){
+                             for (Currency currency : result) { %>
+                                    <%if (currency.getToCurrency() != null) {%>
+                                     <option value="<%= currency.getToCurrency()%>"><%= currency.getToCurrency()%></option>
+                                    <%}
+                                    } }%>
                     <option value="USD">🇺🇸&emsp;US Dollar (USD)</option>
                                    <option value="INR">🇮🇳&emsp;Indian Rupee (INR)</option>
                                    <option value="EUR">🇪🇺&emsp;Euro (EUR)</option>
@@ -143,8 +113,15 @@ font-weight:bold;
         </div>
         <div class="form-group">
             <label for="amount">Amount:</label>
+               <% if (result!= null){
+                                         for (Currency currency : result) { %>
+                                                <%if (currency.getAmount() != null) {%>
+                                                <input class="form-control" type="text" name="amount" id="amount" value="<%=currency.getAmount()%>" placeholder="Enter amount" required/>
+                                                           <%}
+                                                } }else{%>
             <input class="form-control" type="text" name="amount" id="amount" placeholder="Enter amount" required/>
             <p id="amountError" class="text-danger"></p>
+            <%}%>
         </div>
 
 <% List<ObjectError> errors = (List<ObjectError>) request.getAttribute("ErrorFromBackend");
@@ -165,35 +142,46 @@ if (errors != null) { %>
 
         <div class="form-group">
             <label for="date">Date:</label>
+            <% if (result!= null){
+             for (Currency currency : result) { %>
+              <%if (currency.getDate() != null) {%>
+              <input type="date" class="form-control" name="date" id="datePicker" value ="<%=currency.getDate()%>" required>
+               <%}
+                        } }else{%>
             <input type="date" class="form-control" name="date" id="datePicker" required>
+            <%}%>
         </div>
+
+
+
+
         <div class="form-group">
             <label for="result">Result:</label>
+           <% if (result!= null){
+                        for (Currency currency : result) { %>
+
             <%
-                String result = (String) request.getAttribute("result");
-                if (result != null) {
+                if (currency.getConvertedAmount() != null) {
             %>
-            <input type="text" class="form-control" value="<%= result %>" readonly>
+            <input type="text" class="form-control" value="<%= currency.getConvertedAmount() %>" readonly>
             <%
                 } else {
             %>
             <input type="text" class="form-control" value="No result available"  readonly>
             <%
                 }
-            %>
+            } }%>
         </div>
         <button type="submit" class="btn btn-success">Convert</button>
         <a type="button" href="history"class="btn btn-primary">History</a>
     </form>
 
-    <div class="result mt-4">
-        <!-- Result will be displayed here -->
-    </div>
+   <div id="resultDiv" class="result mt-4">
+       <!-- Result will be displayed here -->
+   </div>
+
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
     var datePicker = document.getElementById("datePicker");
@@ -205,27 +193,37 @@ if (errors != null) { %>
     const amountInput = document.getElementById("amount");
     const amountError = document.getElementById("amountError");
 
-    amountInput.addEventListener("input", function() {
-        const value = amountInput.value;
-        // Define a regular expression pattern to allow only numbers
-        const pattern = /^[0-9.]*$/;
 
-        if (!pattern.test(value)) {
-            amountError.textContent = "Only numbers are allowed.";
-        } else {
-            amountError.textContent = ""; // Clear the error message
-        }
-    });
+      function ValidateContact() {
+          const amountInput = document.getElementById("amount"); // Assuming you have an element with id "amount"
+          const amountError = document.getElementById("amountError"); // Assuming you have an element with id "amountError"
+
+          const value = amountInput.value;
+          const pattern = /^[0-9.]*$/;
+
+          if (!pattern.test(value)) {
+              amountError.textContent = "Only numbers are allowed.";
+              return false; // Return false if validation fails
+          } else {
+              amountError.textContent = ""; // Clear the error message
+              return true; // Return true if validation passes
+          }
+      }
+
+      function validateForm(event) {
+          if (!ValidateContact()) {
+              alert("Please enter a valid amount");
+              event.preventDefault();
+              return false;
+          }
+          return true;
+      }
+
+      document.querySelector("form").addEventListener("submit", validateForm);
+
+
+
 </script>
-<footer class="bg-dark text-light">
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <p>&copy; 2023 Currency Converter. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
 </body>
 </html>
+<%@ include file="footer.jsp"%>

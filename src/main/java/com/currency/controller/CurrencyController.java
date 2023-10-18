@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,18 +27,18 @@ public class CurrencyController {
         return "index";
     }
 
-    @RequestMapping(value = "/convert" ,method = RequestMethod.POST)
-    public String convert(@Valid Currency currency, BindingResult br, Model model){
-        if (br.hasErrors()) {
-            List<ObjectError> errors = br.getAllErrors();
-            model.addAttribute("ErrorFromBackend", errors);
+        @RequestMapping(value = "/convert" ,method = RequestMethod.POST)
+        public String convert(@Valid Currency currency, BindingResult br, Model model){
+            if (br.hasErrors()) {
+                List<ObjectError> errors = br.getAllErrors();
+                model.addAttribute("ErrorFromBackend", errors);
+                return "index";
+            }else{
+                List<Currency> result = currencyService.convertAmount(currency);
+                model.addAttribute("result",result);
             return "index";
-        }else{
-        String result = currencyService.convertAmount(currency);
-        model.addAttribute("result",result);
-        return "index";
-    }
-    }
+        }
+        }
     @RequestMapping(value = "/history" ,method = RequestMethod.GET)
     public String getAll( Model model){
         List<Currency> all = currencyService.getAll();

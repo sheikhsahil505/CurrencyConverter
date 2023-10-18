@@ -23,3 +23,9 @@ h
 8src/main/java/com/currency/util/ConvertCurrencyImpl.java,5/f/5f02b5e582ec26a8c528de4670aaa8dbca1d32b7
 m
 =src/main/java/com/currency/controller/CurrencyController.java,1/6/16314d1db805364b584f0a1cc4d40a9620c1e9cc
+W
+'src/main/webapp/WEB-INF/jsp/history.jsp,9/4/94e275ae9fa234244133c2f6f5951c45062f8e19
+V
+&src/main/webapp/WEB-INF/jsp/footer.jsp,8/d/8de6e3d4c30a2d3691e5ed5016c05dc9727cb054
+V
+&src/main/webapp/WEB-INF/jsp/header.jsp,b/8/b89d908249dbd6ca3797ce58650e188ee38cfe06

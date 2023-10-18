@@ -15,8 +15,8 @@ private ConvertCurrency convertCurrency;
 @Autowired
     private CurrencyDao currencyDao;
     @Override
-    public String convertAmount(Currency currency) {
-        return this.convertCurrency.convertAmount(currency);
+    public List<Currency> convertAmount(Currency currency) {
+     return this.convertCurrency.convertAmount(currency);
     }
 
     @Override

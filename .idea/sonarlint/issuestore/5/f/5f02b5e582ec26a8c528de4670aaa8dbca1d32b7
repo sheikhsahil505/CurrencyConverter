@@ -1,6 +1,5 @@
 
 T
-java:S1874("2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ8§äœÄ³1
+java:S18746"2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ8êÍşâ³1
 J
-java:S1874)"-Remove this use of "parse"; it is deprecated.(û€·8§äœÄ³1
-L	java:S1060"+Replace this use of System.out by a logger.(®ıáëûÿÿÿÿ8¨äœÄ³1
+java:S18747"-Remove this use of "parse"; it is deprecated.(û€·8ëÍşâ³1

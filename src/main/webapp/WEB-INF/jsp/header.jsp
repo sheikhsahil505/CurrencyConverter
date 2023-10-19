@@ -59,6 +59,7 @@
                  <a class="nav-link" href="?lang=gj">ગુજરાતી</a>
              </li>
          </ul>
+
         </div>
 
     </nav>

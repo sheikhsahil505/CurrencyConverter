@@ -9,6 +9,8 @@
 
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         /* Add custom CSS styles here */
         body {
@@ -32,6 +34,8 @@
     </style>
 </head>
 <body>
+   <form action="history" method="get" >
+
     <div class="container mt-5"  id="container">
         <h2 class="text-center"><spring:message code="history.header"/></h2>
         <div class="table-responsive" id="adminTable">
@@ -73,6 +77,27 @@
             </table>
         </div>
     </div>
+    </form>
+   <div class="container mt-3 text-center">
+       <!-- Pagination buttons -->
+       <ul class="pagination">
+           <li class="page-item">
+               <a class="page-link" href="1">1</a>
+           </li>
+           <li class="page-item">
+               <a class="page-link" href="2">2</a>
+           </li>
+           <li class="page-item">
+               <a class="page-link" href="3">3</a>
+           </li>
+           <!-- Add more pages as needed -->
+           <li class="page-item">
+               <a class="page-link" href="" id="nextPage"><spring:message code="history.next"/></a>
+           </li>
+       </ul>
+   </div>
+
+
 </body>
 </html>
 <%@ include file="footer.jsp"%>

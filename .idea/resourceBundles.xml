@@ -10,7 +10,6 @@
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_cn.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_en.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_fr.properties" />
-      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_gj.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_hi.properties" />
       <base-name>messages</base-name>
     </custom-resource-bundle>
@@ -18,6 +17,7 @@
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_cn.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_en.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_fr.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_gj.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_hi.properties" />
       <base-name>messages</base-name>
     </custom-resource-bundle>

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,8 +67,8 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
            }
            currency.setConvertedAmount(result);
            currency.setExchangeRate(exchangeRate);
-           LocalTime currentTime = LocalTime.now();
-           currency.setTimeStamp(String.valueOf(currentTime));
+           LocalDateTime currentDateTime = LocalDateTime.now().withNano(0);
+           currency.setTimeStamp(String.valueOf(currentDateTime));
            currencyService.save(currency);
 
        }catch (Exception e){

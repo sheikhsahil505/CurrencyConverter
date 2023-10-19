@@ -25,7 +25,7 @@ private ConvertCurrency convertCurrency;
     }
 
     @Override
-    public List<Currency> getAll() {
-        return  this.currencyDao.getAll();
+    public List<Currency> getAll(int pageId, int total) {
+        return  this.currencyDao.getAll(pageId,total);
     }
 }

@@ -9,5 +9,5 @@ public interface CurrencyService {
 
     void save(Currency currency);
 
-    List<Currency> getAll();
+    List<Currency> getAll(int pageId, int total);
 }

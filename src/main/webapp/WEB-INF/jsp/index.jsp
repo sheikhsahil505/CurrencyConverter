@@ -168,7 +168,10 @@ if (errors != null) { %>
             } }%>
         </div>
         <button type="submit" class="btn btn-success"><spring:message code="convert.btn"/></button>
-        <a type="button" href="history"class="btn btn-primary"><spring:message code="history.btn"/></a>
+       <form action ="history"  >
+       <input type="hidden" value="1" name ="pageNo">
+        <a type="button" href="history/1"class="btn btn-primary"><spring:message code="history.btn"/></a>
+    </form>
     </form>
 
    <div id="resultDiv" class="result mt-4">

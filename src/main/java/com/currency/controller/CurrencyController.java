@@ -7,10 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +29,7 @@ public class CurrencyController {
         return "index";
     }
 
-        @RequestMapping(value = "/convert" ,method = RequestMethod.POST)
+        @RequestMapping(value = "/convert")
         public String convert(@Valid Currency currency, BindingResult br, Model model){
             if (br.hasErrors()) {
                 List<ObjectError> errors = br.getAllErrors();
@@ -42,18 +41,15 @@ public class CurrencyController {
             return "index";
         }
         }
-    @RequestMapping(value = "/history" ,method = RequestMethod.GET)
-    public String getAll( Model model){
-        List<Currency> all = currencyService.getAll();
-        model.addAttribute("result",all);
+    @GetMapping(value = "/history/{pageNo}")
+    public String getAll(@PathVariable("pageNo") String pageId, Model model) {
+        int intId= Integer.parseInt(pageId);
+        int total = 10;
+        List<Currency> all = currencyService.getAll(intId, total);
+        model.addAttribute("result", all);
         return "history";
     }
-    @RequestMapping("/change-language")
-    public String changeLanguage(@RequestParam String lang, HttpServletRequest request, HttpServletResponse response) {
-        // Set the user's preferred language
-        RequestContextUtils.getLocaleResolver(request).setLocale(request, response, new java.util.Locale(lang));
 
-        // Redirect back to the current page
-        return "redirect:" + request.getHeader("Referer");
-    }
+
+
 }

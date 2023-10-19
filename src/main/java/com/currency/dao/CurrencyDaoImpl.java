@@ -25,10 +25,17 @@ public class CurrencyDaoImpl implements CurrencyDao {
 
     @Override
     @Transactional
-    public List<Currency> getAll() {
+    public List<Currency> getAll(int pageId, int pageSize) {
         Session session = sessionFactory.getCurrentSession();
+        // Calculate the first result index for the given page
+        int firstResult = (pageId - 1) * pageSize;
         Query<Currency> query = session.createQuery("FROM Currency ORDER BY id DESC", Currency.class);
-         return query.getResultList();
+        // Set pagination parameters
+        query.setFirstResult(firstResult);
+        query.setMaxResults(pageSize);
+
+        return query.getResultList();
     }
+
 
 }

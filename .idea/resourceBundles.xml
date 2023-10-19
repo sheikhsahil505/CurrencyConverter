@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_ar.properties" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_cn.properties" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_en.properties" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_fr.properties" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_hi.properties" />
     <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_cn.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_en.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_fr.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_gj.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_hi.properties" />
+      <base-name>messages</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_cn.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_en.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_fr.properties" />
       <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_hi.properties" />
-      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_zh-cn.properties" />
+      <base-name>messages</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_ar.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_cn.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_en.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_fr.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_gj.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/messages_hi.properties" />
       <base-name>messages</base-name>
     </custom-resource-bundle>
   </component>

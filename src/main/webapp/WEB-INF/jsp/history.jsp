@@ -1,11 +1,12 @@
 <%@ include file="header.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.currency.model.Currency" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration List</title>
+
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -32,19 +33,19 @@
 </head>
 <body>
     <div class="container mt-5"  id="container">
-        <h2 class="text-center">Currency History</h2>
+        <h2 class="text-center"><spring:message code="history.header"/></h2>
         <div class="table-responsive" id="adminTable">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>S.No.</th>
-                        <th>Amount</th>
-                        <th>Converted Amount</th>
-                        <th>Date</th>
-                        <th>Exchange Rate</th>
-                        <th>From Currency</th>
-                        <th>To Currency</th>
-                        <th>Time Stamp</th>
+                        <th><spring:message code="history.s.no"/></th>
+                        <th><spring:message code="history.amount"/></th>
+                        <th><spring:message code="history.convertedAmount"/></th>
+                        <th><spring:message code="history.date"/></th>
+                        <th><spring:message code="history.exchangeRate"/></th>
+                        <th><spring:message code="history.fromCurrency"/></th>
+                        <th><spring:message code="history.toCurrency"/></th>
+                        <th><spring:message code="history.timestamp"/></th>
                     </tr>
                 </thead>
                 <tbody>

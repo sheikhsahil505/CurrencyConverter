@@ -10,7 +10,10 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -44,5 +47,13 @@ public class CurrencyController {
         List<Currency> all = currencyService.getAll();
         model.addAttribute("result",all);
         return "history";
+    }
+    @RequestMapping("/change-language")
+    public String changeLanguage(@RequestParam String lang, HttpServletRequest request, HttpServletResponse response) {
+        // Set the user's preferred language
+        RequestContextUtils.getLocaleResolver(request).setLocale(request, response, new java.util.Locale(lang));
+
+        // Redirect back to the current page
+        return "redirect:" + request.getHeader("Referer");
     }
 }

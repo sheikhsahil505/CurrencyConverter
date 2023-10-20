@@ -1,6 +1,7 @@
 package com.currency.service;
 
 import com.currency.model.Currency;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -9,5 +10,9 @@ public interface CurrencyService {
 
     void save(Currency currency);
 
-    List<Currency> getAll(int pageId, int total);
+    List<Currency> getAll(String pageId);
+
+    List<String> handleBackendError(BindingResult br);
+
+    List<Currency> getAllBySort(String fieldName);
 }

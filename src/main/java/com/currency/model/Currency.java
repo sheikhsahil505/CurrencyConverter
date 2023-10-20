@@ -13,7 +13,7 @@ public class Currency {
     private Long id;
 
     @Column(name = "amount")
-    @Pattern(regexp = "^[0-9.]*$", message = "Amount should contain only digits and periods.")
+    @Pattern(regexp = "^[0-9.]*$", message = "validation.amount.backend")
     private String amount;
 
 

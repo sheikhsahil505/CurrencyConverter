@@ -10,6 +10,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 
@@ -19,10 +22,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-@Service
+@Configuration
+@PropertySource("classpath:application.properties")
 public class ConvertCurrencyImpl implements ConvertCurrency{
     @Autowired
     private CurrencyService currencyService;
+    @Value("${api.key}")
+    private String apiKey;
+
     @Override
     public List<Currency> convertAmount(Currency currency) {
         List<Currency> list = new ArrayList<>();
@@ -45,7 +52,7 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
                            "&from=" + from +
                            "&amount=" + amount +
                            "&date=" + date)
-                   .addHeader("apikey", "y5X9FLl3vs2DNjfbI5yR2JXqgRAQ4d2U")
+                   .addHeader("apikey", apiKey)
                    .get()
                    .build();
 

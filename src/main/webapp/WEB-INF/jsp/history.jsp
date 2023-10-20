@@ -7,9 +7,11 @@
 <html>
 <head>
 
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+ <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
 
     <style>
         /* Add custom CSS styles here */
@@ -39,17 +41,17 @@
     <div class="container mt-5"  id="container">
         <h2 class="text-center"><spring:message code="history.header"/></h2>
         <div class="table-responsive" id="adminTable">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" id="mytable">
                 <thead class="thead-dark">
                     <tr>
                         <th><spring:message code="history.s.no"/></th>
-                        <th><spring:message code="history.amount"/></th>
-                        <th><spring:message code="history.convertedAmount"/></th>
-                        <th><spring:message code="history.date"/></th>
-                        <th><spring:message code="history.exchangeRate"/></th>
-                        <th><spring:message code="history.fromCurrency"/></th>
-                        <th><spring:message code="history.toCurrency"/></th>
-                        <th><spring:message code="history.timestamp"/></th>
+                       <th><a href="amount"><spring:message code="history.amount"/></a></th>
+                       <th><a href="converted_amount"><spring:message code="history.convertedAmount"/></a></th>
+                        <th><a href="date"><spring:message code="history.date"/></a></th>
+                        <th><a href="exchange_rate"><spring:message code="history.exchangeRate"/></a></th>
+                        <th><a href="from_currency"><spring:message code="history.fromCurrency"/></a></th>
+                        <th><a href="to_currency"><spring:message code="history.toCurrency"/></a></th>
+                        <th><a href="time_stamp"><spring:message code="history.timestamp"/></a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,10 +94,21 @@
            </li>
            <!-- Add more pages as needed -->
            <li class="page-item">
-               <a class="page-link" href="" id="nextPage"><spring:message code="history.next"/></a>
+               <a class="page-link" href="next" id="nextPage"><spring:message code="history.next"/></a>
            </li>
        </ul>
    </div>
+
+
+
+ <script>
+  <!-- var table = $('#mytable').DataTable({
+    "ordering": false
+  });
+-->
+</script>
+
+
 
 
 </body>

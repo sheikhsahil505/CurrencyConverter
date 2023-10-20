@@ -7,4 +7,6 @@ import java.util.List;
 public interface CurrencyDao {
     void save(Currency currency);
     List<Currency> getAll(int pageId,int total);
+
+    List<Currency> getAllBySort(String fieldName);
 }

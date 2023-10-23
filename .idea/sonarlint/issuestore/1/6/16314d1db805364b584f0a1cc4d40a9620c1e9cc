@@ -1,13 +1,11 @@
 
+d
+java:S1192#"GDefine a constant instead of duplicating this literal "result" 4 times.(·Œ¹8õšÏ”µ1
 h
-java:S1192"FDefine a constant instead of duplicating this literal "index" 3 times.(¦œû×ÿÿÿÿÿ8µÊ¨¾´1
+java:S1192"FDefine a constant instead of duplicating this literal "index" 3 times.(¦œû×ÿÿÿÿÿ8öšÏ”µ1
+e
+java:S1192,"HDefine a constant instead of duplicating this literal "history" 3 times.(Ä Üß8öšÏ”µ1
 \
-java:S4684!"@Replace this persistent entity with a simple POJO or DTO object.(·çµ.8ìá»´1
-z
-java:S1128"XRemove this unused import 'org.springframework.web.servlet.support.RequestContextUtils'.(ñ¸şøÿÿÿÿ8™äœ¾´1
-k
-java:S1128"NRemove this unused import 'org.springframework.web.servlet.view.RedirectView'.(ñÎ²Ò8™äœ¾´1
-_
-java:S1128"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8šäœ¾´1
-`
-java:S1128"CRemove this unused import 'javax.servlet.http.HttpServletResponse'.(Á¨ïë8šäœ¾´1
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(·çµ.8›Ï”µ1
+e
+java:S4488("HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ĞñÓÁ8…›Ï”µ1

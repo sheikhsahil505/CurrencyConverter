@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -26,12 +27,26 @@ public class CurrencyDaoImpl implements CurrencyDao {
         hibernateTemplate.save(currency);
     }
 
+
+
     @Override
     @Transactional
-    public List<Currency> getAll(int pageId, int pageSize) {
+    public List<Currency> getAll() {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<Currency> query = session.createQuery("FROM Currency ORDER BY id DESC", Currency.class);
+        query.setMaxResults(10); // Limit the results to the last 10 records
+
+        return query.getResultList();
+
+    }
+
+    @Override
+@Transactional
+    public List<Currency> getAllByPagination(int currentPage, int pageSize) {
         Session session = sessionFactory.getCurrentSession();
         // Calculate the first result index for the given page
-        int firstResult = (pageId - 1) * pageSize;
+        int firstResult = (currentPage - 1) * pageSize;
         Query<Currency> query = session.createQuery("FROM Currency ORDER BY id DESC", Currency.class);
         // Set pagination parameters
         query.setFirstResult(firstResult);
@@ -42,31 +57,20 @@ public class CurrencyDaoImpl implements CurrencyDao {
 
     @Override
     @Transactional
-    public List<Currency> getAllBySort(String field) {
-        // Construct the HQL query with sorting and limiting
-        String queryString = "SELECT c FROM Currency c ORDER BY ";
+    public List<Currency> filterByKeyword(String keyword) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "FROM Currency " +
+                "WHERE amount LIKE :keyword " +
+                "OR convertedAmount LIKE :keyword " +
+                "OR date LIKE :keyword " +
+                "OR exchangeRate LIKE :keyword " +
+                "OR fromCurrency LIKE :keyword " +
+                "OR toCurrency LIKE :keyword " +
+                "OR timeStamp LIKE :keyword";
 
-        if ("amount".equals(field)) {
-            queryString += "c.amount ASC";
-        } else if ("converted_amount".equals(field)) {
-            queryString += "c.convertedAmount ASC";
-        } else if ("date".equals(field)) {
-            queryString += "c.date ASC";
-        } else if ("exchange_rate".equals(field)) {
-            queryString += "c.exchangeRate ASC";
-        } else if ("from_currency".equals(field)) {
-            queryString += "c.fromCurrency ASC";
-        } else if ("to_currency".equals(field)) {
-            queryString += "c.toCurrency ASC";
-        } else if ("time_stamp".equals(field)) {
-            queryString += "c.timeStamp ASC";
-        } else {
-            queryString += "c.id ASC"; // Default sorting
-        }
+        Query<Currency> query = session.createQuery(hql, Currency.class);
+        query.setParameter("keyword", "%" + keyword + "%");
 
-
-        Query query = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(queryString);
-        query.setMaxResults(50); // Limit to the latest 10 records
         return query.list();
     }
 

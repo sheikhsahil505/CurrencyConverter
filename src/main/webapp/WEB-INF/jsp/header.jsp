@@ -41,22 +41,22 @@
 
   <ul class="navbar-nav">
              <li class="nav-item">
-                 <a class="nav-link" href="?lang=en">English</a>
+                 <a class="nav-link" href="history?lang=en">English</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="?lang=fr">Français</a>
+                 <a class="nav-link" href="history?lang=fr">Français</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="?lang=cn">中国人</a>
+                 <a class="nav-link" href="history?lang=cn">中国人</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="?lang=hi">हिंदी</a>
+                 <a class="nav-link" href="history?lang=hi">हिंदी</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="?lang=ar">عربي</a>
+                 <a class="nav-link" href="history?lang=ar">عربي</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="?lang=gj">ગુજરાતી</a>
+                 <a class="nav-link" href="history?lang=gj">ગુજરાતી</a>
              </li>
          </ul>
 

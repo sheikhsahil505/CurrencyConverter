@@ -36,22 +36,37 @@
     </style>
 </head>
 <body>
-   <form action="history" method="get" >
+ <div class="container mt-5" id="container">
+     <div class="row">
+         <div class="col">
+             <h2 class="text-center">
+                 <spring:message code="history.header" />
+             </h2>
+         </div>
+         <div class="col">
+         <form action ="search" method="get">
+             <div class="input-group">
+                 <input type="text" class="form-control" name="keyword" placeholder="<spring:message code="history.search.placeholder"/>" aria-label="Search" aria-describedby="searchButton">
+                 <div class="input-group-append">
+                     <button class="btn btn-primary" type="submit" id="searchButton"><spring:message code="history.search"/></button>
+                 </div>
+             </div>
+             </form>
+         </div>
+     </div>
 
-    <div class="container mt-5"  id="container">
-        <h2 class="text-center"><spring:message code="history.header"/></h2>
-        <div class="table-responsive" id="adminTable">
+       <div class="table-responsive" id="adminTable">
             <table class="table table-striped table-bordered" id="mytable">
                 <thead class="thead-dark">
                     <tr>
                         <th><spring:message code="history.s.no"/></th>
-                       <th><a href="amount"><spring:message code="history.amount"/></a></th>
-                       <th><a href="converted_amount"><spring:message code="history.convertedAmount"/></a></th>
-                        <th><a href="date"><spring:message code="history.date"/></a></th>
-                        <th><a href="exchange_rate"><spring:message code="history.exchangeRate"/></a></th>
-                        <th><a href="from_currency"><spring:message code="history.fromCurrency"/></a></th>
-                        <th><a href="to_currency"><spring:message code="history.toCurrency"/></a></th>
-                        <th><a href="time_stamp"><spring:message code="history.timestamp"/></a></th>
+                       <th><spring:message code="history.amount"/></th>
+                       <th><spring:message code="history.convertedAmount"/></th>
+                        <th><spring:message code="history.date"/></a></th>
+                        <th><spring:message code="history.exchangeRate"/></th>
+                        <th><spring:message code="history.fromCurrency"/></th>
+                        <th><spring:message code="history.toCurrency"/></th>
+                        <th><spring:message code="history.timestamp"/></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +77,7 @@
                             for (Currency currency : result) {
                     %>
                     <tr>
-                        <td><%= count++ %></td>
+                        <td><%= currency.getId() %></td>
                         <td><%= currency.getAmount() %></td>
                         <td><%= currency.getConvertedAmount() %></td>
                         <td><%= currency.getDate() %></td>
@@ -79,27 +94,27 @@
             </table>
         </div>
     </div>
+<div class="container mt-3">
+    <form action="pagination" method="GET" class="row" id="paginationForm">
+        <div class="form-group col-md-3">
+            <label for="pageSize"><spring:message code="history.pageSize"/></label>
+            <input type="number" id="pageSize" name="pageSize" class="form-control" value="10">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="pageNo"><spring:message code="history.pageNo"/></label>
+            <select class="form-control" name="pageNo" id="pageNo" onchange="submitForm()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="next">Next</option>
+            </select>
+        </div>
     </form>
-   <div class="container mt-3 text-center">
-       <!-- Pagination buttons -->
-       <ul class="pagination">
-           <li class="page-item">
-               <a class="page-link" href="1">1</a>
-           </li>
-           <li class="page-item">
-               <a class="page-link" href="2">2</a>
-           </li>
-           <li class="page-item">
-               <a class="page-link" href="3">3</a>
-           </li>
-           <!-- Add more pages as needed -->
-           <li class="page-item">
-               <a class="page-link" href="next" id="nextPage"><spring:message code="history.next"/></a>
-           </li>
-       </ul>
+</div>
+
+
+
    </div>
-
-
 
  <script>
   <!-- var table = $('#mytable').DataTable({
@@ -109,6 +124,11 @@
 </script>
 
 
+<script>
+    function submitForm() {
+        document.getElementById("paginationForm").submit();
+    }
+</script>
 
 
 </body>

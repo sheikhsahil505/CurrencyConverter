@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface CurrencyDao {
     void save(Currency currency);
-    List<Currency> getAll(int pageId,int total);
+    List<Currency> getAll();
 
-    List<Currency> getAllBySort(String fieldName);
+    List<Currency> getAllByPagination(int currentPage, int total);
+
+    List<Currency> filterByKeyword(String keyword);
+
+
 }

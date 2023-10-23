@@ -27,8 +27,6 @@ V
 &src/main/webapp/WEB-INF/jsp/footer.jsp,8/d/8de6e3d4c30a2d3691e5ed5016c05dc9727cb054
 V
 &src/main/webapp/WEB-INF/jsp/header.jsp,b/8/b89d908249dbd6ca3797ce58650e188ee38cfe06
-s
-Csrc/main/java/com/currency/interceptor/MyControllerInterceptor.java,f/f/ff64f72bbd269c937dee3d8cfaec127eb9e64fa4
 ^
 .src/main/webapp/WEB-INF/messages_fr.properties,3/d/3d9898acec59cc7537b0ae2a2ac66639f1141371
 ^

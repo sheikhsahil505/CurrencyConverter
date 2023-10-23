@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,20 +49,8 @@ public class CurrencyServiceImpl implements CurrencyService{
     }
 
     @Override
-    public List<Currency> getAll(String pageId) {
-        int total = 10;
-        if (pageId.equals("next")) {
-            int currentPage = getCurrentPageFromSession();
-            currentPage++;
-            saveCurrentPageToSession(currentPage);
-            return this.currencyDao.getAll(currentPage, total);
-        } else if (!pageId.equals("1") && !pageId.equals("2") && !pageId.equals("3")) {
-           return this.currencyDao.getAllBySort(pageId);
-        } else {
-            int intId = Integer.parseInt(pageId);
-            session.setAttribute("currentPage", intId);
-            return this.currencyDao.getAll(intId, total);
-        }
+    public List<Currency> getAll() {
+        return this.currencyDao.getAll();
     }
 
 
@@ -76,9 +65,31 @@ public class CurrencyServiceImpl implements CurrencyService{
         return errorMessages;
     }
 
-    @Override
-    public List<Currency> getAllBySort(String fieldName) {
+//    @Override
+//    public List<Currency> getAllBySort(String fieldName) {
+//
+//        return this.currencyDao.getAllBySort(fieldName);
+//    }
 
-        return this.currencyDao.getAllBySort(fieldName);
+    @Override
+    @Transactional
+    public List<Currency> getByPagination(String pageId, String pageSize) {
+        int total = Integer.parseInt(pageSize);
+        if (pageId.equals("next")) {
+            int currentPage = getCurrentPageFromSession();
+            currentPage++;
+            saveCurrentPageToSession(currentPage);
+            return this.currencyDao.getAllByPagination(currentPage, total);
+        }  else {
+            int intId = Integer.parseInt(pageId);
+            session.setAttribute("currentPage", intId);
+            return this.currencyDao.getAllByPagination(intId, total);
+        }
+
+    }
+
+    @Override
+    public List<Currency> filterByKeyword(String keyword) {
+        return this.currencyDao.filterByKeyword(keyword);
     }
 }

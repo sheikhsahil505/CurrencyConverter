@@ -10,9 +10,13 @@ public interface CurrencyService {
 
     void save(Currency currency);
 
-    List<Currency> getAll(String pageId);
+    List<Currency> getAll();
 
     List<String> handleBackendError(BindingResult br);
 
-    List<Currency> getAllBySort(String fieldName);
+
+
+    List<Currency> getByPagination(String pageId, String pageSize);
+
+    List<Currency> filterByKeyword(String keyword);
 }

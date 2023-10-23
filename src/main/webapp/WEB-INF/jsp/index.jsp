@@ -234,7 +234,7 @@ if (errors != null) { %>
 
         <button type="submit" class="btn btn-success"><spring:message code="convert.btn"/></button>
 
-        <a type="button" href="history/1"class="btn btn-primary"><spring:message code="history.btn"/></a>
+        <a type="button" href="history"class="btn btn-primary"><spring:message code="history.btn"/></a>
 
     </form>
 

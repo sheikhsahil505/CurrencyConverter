@@ -48,10 +48,7 @@ public class CurrencyServiceImpl implements CurrencyService{
         session.setAttribute("currentPage", currentPage);
     }
 
-    @Override
-    public List<Currency> getAll() {
-        return this.currencyDao.getAll();
-    }
+
 
 
     @Override

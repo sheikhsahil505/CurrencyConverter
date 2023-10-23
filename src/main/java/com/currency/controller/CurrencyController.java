@@ -37,14 +37,6 @@ public class CurrencyController {
         return "index";
     }
 
-    //        this method fetch history
-    @RequestMapping(value = "/history", method = RequestMethod.GET)
-    public String getAll(Model model) {
-        List<Currency> all = currencyService.getAll();
-        model.addAttribute("result", all);
-        return "history";
-    }
-
     @GetMapping(value = "/pagination")
     public String pagination(@RequestParam("pageNo") String pageNo, @RequestParam("pageSize") String pageSize, Model model) {
         List<Currency> all = currencyService.getByPagination(pageNo, pageSize);

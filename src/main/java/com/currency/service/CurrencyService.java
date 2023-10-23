@@ -10,7 +10,7 @@ public interface CurrencyService {
 
     void save(Currency currency);
 
-    List<Currency> getAll();
+
 
     List<String> handleBackendError(BindingResult br);
 

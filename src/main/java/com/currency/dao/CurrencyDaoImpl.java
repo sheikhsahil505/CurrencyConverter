@@ -27,19 +27,6 @@ public class CurrencyDaoImpl implements CurrencyDao {
         hibernateTemplate.save(currency);
     }
 
-
-
-    @Override
-    @Transactional
-    public List<Currency> getAll() {
-        Session session = sessionFactory.getCurrentSession();
-
-        Query<Currency> query = session.createQuery("FROM Currency ORDER BY id DESC", Currency.class);
-        query.setMaxResults(10); // Limit the results to the last 10 records
-
-        return query.getResultList();
-    }
-
     @Override
 @Transactional
     public List<Currency> getAllByPagination(int currentPage, int pageSize) {

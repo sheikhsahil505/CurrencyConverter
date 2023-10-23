@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CurrencyDao {
     void save(Currency currency);
-    List<Currency> getAll();
+
 
     List<Currency> getAllByPagination(int currentPage, int total);
 

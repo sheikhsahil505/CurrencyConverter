@@ -236,11 +236,16 @@ if (errors != null) { %>
                     } }%>
                 </div>
 
-        <button type="submit" class="btn btn-success"><spring:message code="convert.btn"/></button>
+<button type="submit" class="btn btn-success"><spring:message code="convert.btn"/></button> </form>
+<form action="pagination" method="GET" class="col-md-6 mx-auto p-2 rounded" style="background-color: #f8f9fa;" id="myForm">
+ <input type="hidden" id="pageSize" name="pageSize" class="form-control" value="10">
+  <input type="hidden" id="pageSize" name="pageNo" class="form-control" value="1">
+    <button type="submit" class="btn btn-primary"><spring:message code="history.btn"/></button>
 
-        <a type="button" href="history"class="btn btn-primary"><spring:message code="history.btn"/></a>
+  </form>
 
-    </form>
+
+
 
    <div id="resultDiv" class="result mt-4">
        <!-- Result will be displayed here -->

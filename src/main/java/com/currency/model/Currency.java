@@ -2,8 +2,11 @@ package com.currency.model;
 
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "currency_history")
@@ -21,15 +24,20 @@ public class Currency {
     private String convertedAmount;
 
     @Column(name = "date")
-    private String date;
+    @PastOrPresent(message = "validation.date.backend")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
+
 
     @Column(name = "exchange_rate")
     private String exchangeRate;
 
     @Column(name = "from_currency")
+    @Pattern(regexp = "^(USD|INR|EUR|SAR|CNY|KWD|MYR|NPR|NZD|TJS|VND|MXN|ZAR)$",message ="validation.currency.backend")
     private String fromCurrency;
 
     @Column(name = "to_currency")
+    @Pattern(regexp = "^(USD|INR|EUR|SAR|CNY|KWD|MYR|NPR|NZD|TJS|VND|MXN|ZAR)$",message ="validation.currency.backend" )
     private String toCurrency;
     @Column(name = "time_stamp")
     private String timeStamp;
@@ -66,11 +74,11 @@ public class Currency {
         this.convertedAmount = convertedAmount;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -101,7 +109,7 @@ public class Currency {
     public Currency() {
     }
 
-    public Currency(Long id, String amount, String convertedAmount, String date, String exchangeRate, String fromCurrency, String toCurrency, String timeStamp) {
+    public Currency(Long id, String amount, String convertedAmount, Date date, String exchangeRate, String fromCurrency, String toCurrency, String timeStamp) {
         this.id = id;
         this.amount = amount;
         this.convertedAmount = convertedAmount;

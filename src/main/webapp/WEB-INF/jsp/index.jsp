@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.currency.model.Currency" %>
 <%@ page import="org.springframework.validation.ObjectError" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -196,8 +197,8 @@ if (errors != null) { %>
             <% if (result!= null){
              for (Currency currency : result) { %>
               <%if (currency.getDate() != null) {%>
-              <input type="date" class="form-control" name="date" id="datePicker" value ="<%=currency.getDate()%>" required>
-               <%}
+           <input type="date" class="form-control" name="date" id="datePicker" value="<%= new SimpleDateFormat("yyyy-MM-dd").format(currency.getDate()) %>" required>
+ <%}
                         } }else{%>
           <input type="date" class="form-control" name="date" id="datePicker" required value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>">
 
@@ -214,8 +215,11 @@ if (errors != null) { %>
             %>
             <input type="text" class="form-control" value="<%= currency.getConvertedAmount() %>" readonly>
             <%
-                }
-            } }%>
+                }else{
+                 %>
+                            <input type="text" class="form-control" value="<spring:message code="server-error"/>" readonly>
+                            <%
+            } }}%>
         </div>
 
          <div class="form-group">
@@ -243,14 +247,12 @@ if (errors != null) { %>
    </div>
 
 </div>
-
-
 <script>
-
  var datePicker = document.getElementById("datePicker");
     var today = new Date();
     var todayFormatted = today.toISOString().split('T')[0];
     datePicker.setAttribute("max", todayFormatted);
+
 const amountInput = document.getElementById("amount");
     const amountError = document.getElementById("amountError");
 

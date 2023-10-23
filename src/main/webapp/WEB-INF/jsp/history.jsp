@@ -56,44 +56,49 @@
      </div>
 
        <div class="table-responsive" id="adminTable">
-            <table class="table table-striped table-bordered" id="mytable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th><spring:message code="history.s.no"/></th>
-                       <th><spring:message code="history.amount"/></th>
-                       <th><spring:message code="history.convertedAmount"/></th>
-                        <th><spring:message code="history.date"/></a></th>
-                        <th><spring:message code="history.exchangeRate"/></th>
-                        <th><spring:message code="history.fromCurrency"/></th>
-                        <th><spring:message code="history.toCurrency"/></th>
-                        <th><spring:message code="history.timestamp"/></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        List<Currency> result = (List<Currency>) request.getAttribute("result");
-                        if (result != null) {
-                            int count = 1;
-                            for (Currency currency : result) {
-                    %>
-                    <tr>
-                        <td><%= currency.getId() %></td>
-                        <td><%= currency.getAmount() %></td>
-                        <td><%= currency.getConvertedAmount() %></td>
-                        <td><%= currency.getDate() %></td>
-                        <td><%= currency.getExchangeRate() %></td>
-                        <td><%= currency.getFromCurrency() %></td>
-                        <td><%= currency.getToCurrency() %></td>
-                        <td><%= currency.getTimeStamp() %></td>
-                    </tr>
-                    <%
-                            }
-                        }
-                    %>
-                </tbody>
-            </table>
-        </div>
-    </div>
+           <table class="table table-striped table-bordered" id="mytable">
+               <thead class="thead-dark">
+                   <tr>
+                       <th><spring:message code="history.s.no" /></th>
+                       <th><spring:message code="history.amount" /></th>
+                       <th><spring:message code="history.convertedAmount" /></th>
+                       <th><spring:message code="history.date" /></th>
+                       <th><spring:message code="history.exchangeRate" /></th>
+                       <th><spring:message code="history.fromCurrency" /></th>
+                       <th><spring:message code="history.toCurrency" /></th>
+                       <th><spring:message code="history.timestamp" /></th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <%
+                       List<Currency> result = (List<Currency>) request.getAttribute("result");
+                       if (result != null && !result.isEmpty()) {
+                           int count = 1;
+                           for (Currency currency : result) {
+                       %>
+                       <tr>
+                           <td><%= currency.getId() %></td>
+                           <td><%= currency.getAmount() %></td>
+                           <td><%= currency.getConvertedAmount() %></td>
+                           <td><%= currency.getDate() %></td>
+                           <td><%= currency.getExchangeRate() %></td>
+                           <td><%= currency.getFromCurrency() %></td>
+                           <td><%= currency.getToCurrency() %></td>
+                           <td><%= currency.getTimeStamp() %></td>
+                       <%
+                           }
+                       } else {
+                       %>
+                       <tr>
+                           <td colspan="8" class="text-center"><spring:message code="history.no-data-found" /></td>
+                       </tr>
+                       <%
+                       }
+                   %>
+               </tbody>
+           </table>
+       </div>
+
 <div class="container mt-3">
     <form action="pagination" method="GET" class="row" id="paginationForm">
         <div class="form-group col-md-3">

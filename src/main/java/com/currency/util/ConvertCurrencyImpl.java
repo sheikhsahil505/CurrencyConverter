@@ -13,11 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Service;
-
-
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,14 +32,17 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
         List<Currency> list = new ArrayList<>();
         String amount = currency.getAmount();
         String to = currency.getToCurrency();
-        String date = currency.getDate();
+        Date date1 = currency.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(date1);
+
 
         String from = currency.getFromCurrency();
         String result = null;
         String exchangeRate = null;
        try {
            OkHttpClient client = new OkHttpClient.Builder()
-                   .readTimeout(1000, TimeUnit.SECONDS)
+                   .readTimeout(100, TimeUnit.SECONDS)
                    .connectTimeout(10, TimeUnit.SECONDS)
                    .build();
 
@@ -57,7 +57,9 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
                    .build();
 
            Response response = client.newCall(request).execute();
+
            String responseBody = response.body().string();
+
 
            JsonParser jsonParser = new JsonParser();
            JsonElement jsonElement = jsonParser.parse(responseBody);
@@ -70,13 +72,14 @@ public class ConvertCurrencyImpl implements ConvertCurrency{
                if (jsonObject.has("info") && jsonObject.get("info").isJsonObject()) {
                    JsonObject infoObject = jsonObject.getAsJsonObject("info");
                    exchangeRate = infoObject.get("rate").getAsString();
+                   currency.setConvertedAmount(result);
+                   currency.setExchangeRate(exchangeRate);
+                   LocalDateTime currentDateTime = LocalDateTime.now().withNano(0);
+                   currency.setTimeStamp(String.valueOf(currentDateTime));
+                   currencyService.save(currency);
                }
            }
-           currency.setConvertedAmount(result);
-           currency.setExchangeRate(exchangeRate);
-           LocalDateTime currentDateTime = LocalDateTime.now().withNano(0);
-           currency.setTimeStamp(String.valueOf(currentDateTime));
-           currencyService.save(currency);
+
 
        }catch (Exception e){
            e.printStackTrace();

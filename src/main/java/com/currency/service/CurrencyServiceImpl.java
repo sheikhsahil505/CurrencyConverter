@@ -59,17 +59,24 @@ public class CurrencyServiceImpl implements CurrencyService{
         List<ObjectError> errors = br.getAllErrors();
         List<String> errorMessages = new ArrayList<>();
         for (ObjectError error : errors) {
-            String errorMessage = messageSource.getMessage(error.getDefaultMessage(), null, LocaleContextHolder.getLocale());
+            String errorMessage;
+            if ("typeMismatch".equals(error.getCode())) {
+                // Check for the date field and set a specific error message
+                if ("date".equals(error.getObjectName())) {
+                    errorMessage =  messageSource.getMessage(error.getDefaultMessage(), null, LocaleContextHolder.getLocale());
+                } else {
+                    errorMessage = " " + error.getObjectName();
+                }
+            } else {
+                errorMessage = messageSource.getMessage(error.getDefaultMessage(), null, LocaleContextHolder.getLocale());
+            }
             errorMessages.add(errorMessage);
         }
         return errorMessages;
     }
 
-//    @Override
-//    public List<Currency> getAllBySort(String fieldName) {
-//
-//        return this.currencyDao.getAllBySort(fieldName);
-//    }
+
+
 
     @Override
     @Transactional

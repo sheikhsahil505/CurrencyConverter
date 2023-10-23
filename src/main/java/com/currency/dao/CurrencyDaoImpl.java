@@ -12,7 +12,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.Collections;
+
 import java.util.List;
 
 @Repository
@@ -38,7 +38,6 @@ public class CurrencyDaoImpl implements CurrencyDao {
         query.setMaxResults(10); // Limit the results to the last 10 records
 
         return query.getResultList();
-
     }
 
     @Override

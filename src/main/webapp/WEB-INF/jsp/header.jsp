@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,10 +23,10 @@
         }
 
         .navbar-nav .nav-link {
-            color: #ffffff; /* White text color */
+            color: #ffffff;
         }
     </style>
-     <!-- Include Bootstrap CSS -->
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-o3h5VT1QCQvMB4S9fgyJPwx7df2b89D1XbvO8XzqSHTR6reQSSN2mpP8v5pDVIqHb" crossorigin="anonymous">
     </head>
     <body>
@@ -41,22 +40,23 @@
 
   <ul class="navbar-nav">
              <li class="nav-item">
-                 <a class="nav-link" href="history?lang=en">English</a>
+                 <a class="nav-link" href="?lang=en&pageSize=10&pageNo=1"">English</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="history?lang=fr">Français</a>
+               <a class="nav-link" href="?lang=fr&pageSize=10&pageNo=1">Français</a>
+
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="history?lang=cn">中国人</a>
+                 <a class="nav-link" href="?lang=cn&pageSize=10&pageNo=1"">中国人</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="history?lang=hi">हिंदी</a>
+                 <a class="nav-link" href="?lang=hi&pageSize=10&pageNo=1"">हिंदी</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="history?lang=ar">عربي</a>
+                 <a class="nav-link" href="?lang=ar&pageSize=10&pageNo=1"">عربي</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link" href="history?lang=gj">ગુજરાતી</a>
+                 <a class="nav-link" href="?lang=gj&pageSize=10&pageNo=1"">ગુજરાતી</a>
              </li>
          </ul>
 

@@ -1,11 +1,5 @@
 
 T
-java:S1874>"2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ8ÛÑ¹é´1
+java:S1874@"2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ8¦•·Þµ1
 J
-java:S1874?"-Remove this use of "parse"; it is deprecated.(ûŽ€·8ÜÑ¹é´1
-`
-java:S1128"CRemove this unused import 'org.springframework.stereotype.Service'.(¼º¡Ú8‡ƒºé´1
-R
-java:S1128"0Remove this unused import 'java.time.LocalTime'.(à®øÃùÿÿÿÿ8ßÑ¹é´1
-H
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8àÑ¹é´1
+java:S1874A"-Remove this use of "parse"; it is deprecated.(ûŽ€·8§•·Þµ1
